@@ -188,13 +188,10 @@ if (isset($_POST['login'])) {
   <!------MENU SECTION START-->
   <?php include('includes/header.php'); ?>
   <!-- MENU SECTION END-->
-  <div class="content-wrapper">
-    <div class="container">
-      <div class="row pad-botm">
-        <div class="col-md-12">
-          <h4 class="header-line">USER LOGIN FORM</h4>
-        </div>
-      </div>
+  <div class="">
+    <div class="">
+
+      <h4 class="header-line">USER LOGIN FORM</h4>
 
       <!--LOGIN PANEL START-->
       <!-- <div class="row">

@@ -56,9 +56,11 @@
             </div>
         </div>
     </section> -->
+
+
     <nav class="nav-gradient mb-10 shadow-lg p-4 fixed  left-0 w-full z-10">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-white text-3xl font-bold">LibraryHub</h1>
+            <a href="dashboard.php" class="text-white text-3xl font-bold">LibraryHub</a>
             <div class="md:hidden">
                 <button onclick="toggleMenu()" class="text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -83,12 +85,13 @@
         </div>
     </nav>
 
+
 <?php } else { ?>
 
 
     <nav class="nav-gradient mb-10 shadow-lg p-4 fixed  left-0 w-full z-10">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-white text-3xl font-bold">LibraryHub</h1>
+            <a href="dashboard.php" class="text-white text-3xl font-bold">LibraryHub</a>
             <div class="md:hidden">
                 <button onclick="toggleMenu()" class="text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
