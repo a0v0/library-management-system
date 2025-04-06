@@ -1,221 +1,125 @@
-﻿
-/*=============================================================
-    Authour URI: www.binarytheme.com
-    License: Commons Attribution 3.0
-
-    http://creativecommons.org/licenses/by/3.0/
-
-    100% Free To use For Personal And Commercial Use.
-    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
-    ========================================================  */
-
-
-
-/* =============================================================
-   GENERAL STYLES
- ============================================================ */
+﻿html,
+body {
+  height: 100%;
+  margin: 0;
+}
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    line-height:28px;
-   
-}
-.set-radius-zero {
-    border-radius:0px;
-    -moz-border-radius:0px;
-    -webkit-border-radius:0px;
-}
-.content-wrapper {
-    margin-top: 40px;
-    min-height:800px;
-    padding-bottom:90px;
-}
-.header-line {
-    font-weight:900;
-    padding-bottom:25px;
-    border-bottom:1px solid #eeeeee;
-    text-transform:uppercase;
-}
-.pad-botm {
-    padding-bottom:30px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-
-/* =============================================================
-   NAVBAR & MENU STYLES
- ============================================================ */
-
-.right-div {
-    float: right; 
-    padding: 20px;
-}
-#menu-top a {
-    color:#000;
-    text-decoration:none;
-    font-weight:500;
-    padding: 25px 15px 25px 15px;
-    text-transform:uppercase;
-
-}
-.menu-section {
-    background-color: #f7f7f7;
-    border-bottom:5px solid #9170E4;
-    width:100%
-}
-.menu-top-active {
-    background-color:#eeeeee;
-}
-.navbar-inverse {
-background-color: #FFF;
-border-color: rgba(155, 153, 153, 0.23);
-
+.main-content {
+  flex: 1 0 auto;
+  padding: 1rem;
 }
 
-.navbar {
-    min-height: 90px;
-    margin-bottom: 0px;
-   
-}
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color:transparent;
-}
-.navbar-toggle {
-background-color: black;
-border: 1px solid black;
+.nav-gradient {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
 }
 
-    /* =============================================================
-   DASHBOARD STYLES
- ============================================================ */
-
-.img-comments {
-   border: 3px double #e1e1e1;
-height: 60px;
-
+.card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.3s ease;
 }
 
-.chat-widget-main {
-    max-height:330px;
-    overflow:auto;
+.card:hover {
+  transform: translateY(-5px);
 }
 
-.slide-bdr {
-   border:5px solid #9170E4
-}
-.chat-widget-left:after {
-    top: 100%;
-    left: 10%;
-    border: solid transparent;
-    content: " ";
-    position: absolute;
-    border-top-color: #F70E62;
-    border-width: 15px;
-    margin-left: -15px;
+.btn-action {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 200px;
 }
 
-.chat-widget-left {
+.btn-action:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.table-container {
+  max-height: 20rem;
+  overflow-y: auto;
+}
+
+footer {
+  flex-shrink: 0;
+  background: #1f2937;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0.5rem;
+  }
+
+  .card {
+    padding: 0.75rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-container table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
     width: 100%;
-    height: auto;
-    padding: 15px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    position: relative;
-    border: 1px solid #F70E62;
-    font-size:12px;
-}
-.chat-widget-right:after {
-    top: 100%;
-    right: 10%;
-    border: solid transparent;
-    content: " ";
+  }
+
+  .table-container th,
+  .table-container td {
+    min-width: 100px;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-action {
+    font-size: 0.875rem;
+  }
+
+  #nav-links {
+    display: none;
+    flex-direction: column;
     position: absolute;
-    border-top-color: #5AA8CC;
-    border-width: 15px;
-    margin-left: -15px;
-}
-
-.chat-widget-right {
+    top: 100%;
+    left: 0;
     width: 100%;
-    height: auto;
-    padding: 15px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    position: relative;
-    border: 1px solid #5AA8CC;
-    font-size:12px;
+    /* background: linear-gradient(to right, #3b82f6, #8b5cf6); */
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #nav-links.active {
+    display: flex;
+  }
 }
 
-.chat-widget-name-left {
-   color: #808080;
-    margin-top: 30px;
-    margin-left: 60px;
-    text-align:left;
-}
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+  }
 
-    .img-left-chat {
-        border:3px double #e1e1e1;
-        float:left;
-        margin-right:30px;
-    }
-     .img-right-chat {
-        border:3px double #e1e1e1;
-        float:right;
-        margin-left:30px;
-    }
-     .chat-widget-main img-right {
-        border:3px double #e1e1e1;
-        float:left;
-    }
-.chat-widget-name-left h4 {
-    font-weight:normal;
-    font-size:11px;
-    
-}
-.chat-widget-name-left h5 {
-    font-weight:normal;
-    font-size:10px;
-}
-.chat-widget-name-right h4 {
-    font-weight:normal;
-    font-size:11px;
-}
-.chat-widget-name-right h5 {
-    font-weight:normal;
-    font-size:10px;
-}
-.chat-widget-name-right {
-    color: #808080;
-    margin-top: 40px;
-    margin-right: 60px;
-    text-align:right;
-}
+  h3 {
+    font-size: 1.25rem;
+  }
 
-.recent-users-sec img {
-    max-height:80px;
-    margin:15px;
+  input {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
 }
-
-.back-widget-set {
-    background-color:transparent;
-}
-
-/* =============================================================
-   FOOTER SECTION STYLES
- ============================================================ */
-.footer-section {
-    padding:25px 50px 25px 50px;
-    color:#000;
-    font-size:13px;
-      background-color: #f7f7f7;
-      text-align:right;
-       border-top:5px solid #9170E4;
-
-}
-
-    .footer-section a, .footer-section a:hover {
-        color:#000;
-    }
-

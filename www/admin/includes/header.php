@@ -1,68 +1,73 @@
-<div class="navbar navbar-inverse set-radius-zero">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand">
-
-                <img src="assets/img/logo.png" />
-            </a>
-
-        </div>
-
-        <div class="right-div">
-            <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
-        </div>
-    </div>
-</div>
-<!-- LOGO HEADER END-->
-<section class="menu-section">
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-12">
-                <div class="navbar-collapse collapse ">
-                    <ul id="menu-top" class="nav navbar-nav navbar-right">
-                        <li><a href="dashboard.php" class="menu-top-active">DASHBOARD</a></li>
-
-                        <li>
-                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Categories <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="add-category.php">Add Category</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-categories.php">Manage Categories</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Authors <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="add-author.php">Add Author</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-authors.php">Manage Authors</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Books <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="add-book.php">Add Book</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-books.php">Manage Books</a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Issue Books <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="issue-book.php">Issue New Book</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-issued-books.php">Manage Issued Books</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="reg-students.php">Reg Students</a></li>
-
-                        <li><a href="change-password.php">Change Password</a></li>
-                    </ul>
-                </div>
+<?php if ($_SESSION['alogin']) { ?>
+    <nav class="bg-gradient-to-r from-blue-500 to-purple-500 mb-10 shadow-lg p-4 fixed left-0 w-full z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="dashboard.php" class="text-white text-3xl font-bold">LibraryHub Admin</a>
+            <div class="md:hidden">
+                <button onclick="toggleMenu()" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
             </div>
-
+            <div id="nav-links" class="hidden md:flex space-x-6 items-center">
+                <a href="dashboard.php" class="text-white hover:text-blue-200 transition font-semibold">Dashboard</a>
+                <div class="relative group inline-block">
+                    <a href="#" class="text-white hover:text-blue-200 transition font-semibold">Categories</a>
+                    <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md">
+                        <a href="add-category.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Add Category</a>
+                        <a href="manage-categories.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Manage Categories</a>
+                    </div>
+                </div>
+                <div class="relative group inline-block">
+                    <a href="#" class="text-white hover:text-blue-200 transition font-semibold">Authors</a>
+                    <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md">
+                        <a href="add-author.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Add Author</a>
+                        <a href="manage-authors.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Manage Authors</a>
+                    </div>
+                </div>
+                <div class="relative group inline-block">
+                    <a href="#" class="text-white hover:text-blue-200 transition font-semibold">Books</a>
+                    <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md">
+                        <a href="add-book.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Add Book</a>
+                        <a href="manage-books.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Manage Books</a>
+                    </div>
+                </div>
+                <div class="relative group inline-block">
+                    <a href="#" class="text-white hover:text-blue-200 transition font-semibold">Issue Books</a>
+                    <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md">
+                        <a href="issue-book.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Issue New Book</a>
+                        <a href="manage-issued-books.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Manage Issued Books</a>
+                    </div>
+                </div>
+                <a href="reg-students.php" class="text-white hover:text-blue-200 transition font-semibold">Reg Students</a>
+                <a href="change-password.php" class="text-white hover:text-blue-200 transition font-semibold">Change Password</a>
+                <a href="logout.php" class="text-white bg-red-600 px-4 py-2 rounded-full hover:bg-red-700 transition font-semibold">Logout</a>
+            </div>
         </div>
-    </div>
-</section>
+    </nav>
+<?php } else { ?>
+    <nav class="bg-gradient-to-r from-blue-500 to-purple-500 mb-10 shadow-lg p-4 fixed left-0 w-full z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.php" class="text-white text-3xl font-bold">LibraryHub</a>
+            <div class="md:hidden">
+                <button onclick="toggleMenu()" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="nav-links" class="hidden md:flex space-x-6 items-center">
+                <a href="adminlogin.php" class="text-white hover:text-blue-200 transition font-semibold">Admin Login</a>
+                <a href="signup.php" class="text-white hover:text-blue-200 transition font-semibold">User Signup</a>
+                <a href="index.php" class="text-white hover:text-blue-200 transition font-semibold">User Login</a>
+            </div>
+        </div>
+    </nav>
+<?php } ?>
+
+<script>
+    function toggleMenu() {
+        const navLinks = document.getElementById("nav-links");
+        navLinks.classList.toggle("hidden");
+    }
+</script>

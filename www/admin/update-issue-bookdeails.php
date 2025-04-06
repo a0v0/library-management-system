@@ -31,13 +31,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         <meta name="author" content="" />
         <title>Online Library Management System | Issued Book Details</title>
         <!-- BOOTSTRAP CORE STYLE  -->
-        <link href="assets/css/bootstrap.css" rel="stylesheet" />
-        <!-- FONT AWESOME STYLE  -->
-        <link href="assets/css/font-awesome.css" rel="stylesheet" />
-        <!-- CUSTOM STYLE  -->
-        <link href="assets/css/style.css" rel="stylesheet" />
-        <!-- GOOGLE FONT -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <script>
             // function for get student name
             function getstudent() {
@@ -82,100 +76,67 @@ if (strlen($_SESSION['alogin']) == 0) {
         <!------MENU SECTION START-->
         <?php include('includes/header.php'); ?>
         <!-- MENU SECTION END-->
-        <div class="content-wra
-    <div class=" content-wrapper">
-            <div class="container">
-                <div class="row pad-botm">
-                    <div class="col-md-12">
-                        <h4 class="header-line">Issued Book Details</h4>
-
+        <div class="bg-gray-100 min-h-screen">
+            <div class="container mx-auto px-4">
+                <div class="pt-26 pb-6">
+                    <div class="text-center">
+                        <h4 class="text-2xl font-bold text-gray-700">Issued Book Details</h4>
                     </div>
-
                 </div>
-                <div class="row">
-                    <div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1"">
-<div class=" panel panel-info">
-                        <div class="panel-heading">
-                            Issued Book Details
+                <div class="flex justify-center">
+                    <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-lg">
+                        <div class="mb-4">
+                            <h5 class="text-lg font-semibold text-gray-600">Book Details</h5>
                         </div>
-                        <div class="panel-body">
-                            <form role="form" method="post">
-                                <?php
-                                $rid = intval($_GET['rid']);
-                                $sql = "SELECT tblstudents.FullName,tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid,tblissuedbookdetails.fine,tblissuedbookdetails.RetrunStatus from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblissuedbookdetails.id=:rid";
-                                $query = $dbh->prepare($sql);
-                                $query->bindParam(':rid', $rid, PDO::PARAM_STR);
-                                $query->execute();
-                                $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                $cnt = 1;
-                                if ($query->rowCount() > 0) {
-                                    foreach ($results as $result) {               ?>
-
-
-
-
-                                        <div class="form-group">
-                                            <label>Student Name :</label>
-                                            <?php echo htmlentities($result->FullName); ?>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Book Name :</label>
-                                            <?php echo htmlentities($result->BookName); ?>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label>ISBN :</label>
-                                            <?php echo htmlentities($result->ISBNNumber); ?>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Book Issued Date :</label>
-                                            <?php echo htmlentities($result->IssuesDate); ?>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label>Book Returned Date :</label>
-                                            <?php if ($result->ReturnDate == "") {
-                                                echo htmlentities("Not Return Yet");
-                                            } else {
-
-
-                                                echo htmlentities($result->ReturnDate);
-                                            }
-                                            ?>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Fine (in USD) :</label>
-                                            <?php
-                                            if ($result->fine == "") { ?>
-                                                <input class="form-control" type="text" name="fine" id="fine" required />
-
-                                            <?php } else {
-                                                echo htmlentities($result->fine);
-                                            }
-                                            ?>
-                                        </div>
-                                        <?php if ($result->RetrunStatus == 0) { ?>
-
-                                            <button type="submit" name="return" id="submit" class="btn btn-info">Return Book </button>
-
-                        </div>
-
-            <?php }
-                                    }
-                                } ?>
-            </form>
+                        <form method="post">
+                            <?php
+                            $rid = intval($_GET['rid']);
+                            $sql = "SELECT tblstudents.FullName,tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid,tblissuedbookdetails.fine,tblissuedbookdetails.RetrunStatus from tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblissuedbookdetails.id=:rid";
+                            $query = $dbh->prepare($sql);
+                            $query->bindParam(':rid', $rid, PDO::PARAM_STR);
+                            $query->execute();
+                            $results = $query->fetchAll(PDO::FETCH_OBJ);
+                            if ($query->rowCount() > 0) {
+                                foreach ($results as $result) { ?>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 font-medium mb-2">Student Name:</label>
+                                        <p class="text-gray-600"><?php echo htmlentities($result->FullName); ?></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 font-medium mb-2">Book Name:</label>
+                                        <p class="text-gray-600"><?php echo htmlentities($result->BookName); ?></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 font-medium mb-2">ISBN:</label>
+                                        <p class="text-gray-600"><?php echo htmlentities($result->ISBNNumber); ?></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 font-medium mb-2">Book Issued Date:</label>
+                                        <p class="text-gray-600"><?php echo htmlentities($result->IssuesDate); ?></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 font-medium mb-2">Book Returned Date:</label>
+                                        <p class="text-gray-600">
+                                            <?php echo $result->ReturnDate == "" ? "Not Returned Yet" : htmlentities($result->ReturnDate); ?>
+                                        </p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 font-medium mb-2">Fine (in USD):</label>
+                                        <?php if ($result->fine == "") { ?>
+                                            <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="fine" id="fine" required />
+                                        <?php } else { ?>
+                                            <p class="text-gray-600"><?php echo htmlentities($result->fine); ?></p>
+                                        <?php } ?>
+                                    </div>
+                                    <?php if ($result->RetrunStatus == 0) { ?>
+                                        <button type="submit" name="return" id="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Return Book</button>
+                            <?php }
+                                }
+                            } ?>
+                        </form>
                     </div>
                 </div>
             </div>
-
-        </div>
-
-        </div>
         </div>
         <!-- CONTENT-WRAPPER SECTION END-->
         <?php include('includes/footer.php'); ?>

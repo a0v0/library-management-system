@@ -38,60 +38,45 @@ if (isset($_POST['login'])) {
     <meta name="author" content="" />
     <title>Online Library Management System</title>
     <!-- BOOTSTRAP CORE STYLE  -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FONT AWESOME STYLE  -->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- CUSTOM STYLE  -->
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
     <!------MENU SECTION START-->
     <?php include('includes/header.php'); ?>
     <!-- MENU SECTION END-->
-    <div class="content-wrapper">
-        <div class="container">
-            <div class="row pad-botm">
-                <div class="col-md-12">
-                    <h4 class="header-line">ADMIN LOGIN FORM</h4>
+    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <h2 class="text-2xl font-bold text-center text-gray-700 mb-6">ADMIN LOGIN</h2>
+        <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+            <form method="post" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Enter Username</label>
+                    <input type="text" name="username" autocomplete="off" required
+                        class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
                 </div>
-            </div>
-
-            <!--LOGIN PANEL START-->
-            <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            LOGIN FORM
-                        </div>
-                        <div class="panel-body">
-                            <form role="form" method="post">
-
-                                <div class="form-group">
-                                    <label>Enter Username</label>
-                                    <input class="form-control" type="text" name="username" autocomplete="off" required />
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="form-control" type="password" name="password" autocomplete="off" required />
-                                </div>
-                                <div class="form-group">
-                                    <label>Verification code : </label>
-                                    <input type="text" name="vercode" maxlength="5" autocomplete="off" required style="width: 150px; height: 25px;" />&nbsp;<img src="captcha.php">
-                                </div>
-
-                                <button type="submit" name="login" class="btn btn-info">LOGIN </button>
-                            </form>
-                        </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" name="password" autocomplete="off" required
+                        class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Verification Code</label>
+                    <div class="flex items-center space-x-4">
+                        <input type="text" name="vercode" maxlength="5" autocomplete="off" required
+                            class="w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                        <img src="captcha.php" alt="Captcha" class="h-10">
                     </div>
                 </div>
-            </div>
-            <!---LOGIN PABNEL END-->
-
-
+                <div>
+                    <button type="submit" name="login"
+                        class="w-full px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        LOGIN
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
     <!-- CONTENT-WRAPPER SECTION END-->

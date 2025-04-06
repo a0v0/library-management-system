@@ -30,91 +30,69 @@ if (strlen($_SESSION['alogin']) == 0) {
         <meta name="author" content="" />
         <title>Online Library Management System | Edit Categories</title>
         <!-- BOOTSTRAP CORE STYLE  -->
-        <link href="assets/css/bootstrap.css" rel="stylesheet" />
-        <!-- FONT AWESOME STYLE  -->
-        <link href="assets/css/font-awesome.css" rel="stylesheet" />
-        <!-- CUSTOM STYLE  -->
-        <link href="assets/css/style.css" rel="stylesheet" />
-        <!-- GOOGLE FONT -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     </head>
 
     <body>
         <!------MENU SECTION START-->
         <?php include('includes/header.php'); ?>
         <!-- MENU SECTION END-->
-        <div class="content-wra
-    <div class=" content-wrapper">
-            <div class="container">
-                <div class="row pad-botm">
-                    <div class="col-md-12">
-                        <h4 class="header-line">Edit category</h4>
-
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
-<div class=" panel panel-info">
-                        <div class="panel-heading">
-                            Category Info
-                        </div>
-
-                        <div class="panel-body">
-                            <form role="form" method="post">
-                                <?php
-                                $catid = intval($_GET['catid']);
-                                $sql = "SELECT * from tblcategory where id=:catid";
-                                $query = $dbh->prepare($sql);
-                                $query->bindParam(':catid', $catid, PDO::PARAM_STR);
-                                $query->execute();
-                                $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                if ($query->rowCount() > 0) {
-                                    foreach ($results as $result) {
-                                ?>
-                                        <div class="form-group">
-                                            <label>Category Name</label>
-                                            <input class="form-control" type="text" name="category" value="<?php echo htmlentities($result->CategoryName); ?>" required />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Status</label>
-                                            <?php if ($result->Status == 1) { ?>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="status" id="status" value="1" checked="checked">Active
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="status" id="status" value="0">Inactive
-                                                    </label>
-                                                </div>
-                                            <?php } else { ?>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="status" id="status" value="0" checked="checked">Inactive
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="status" id="status" value="1">Active
-                                                    </label>
-                                                </div
-                                                    <?php } ?>
-                                                    </div>
-                                        <?php }
-                                } ?>
-                                        <button type="submit" name="update" class="btn btn-info">Update </button>
-
-                            </form>
-                        </div>
+        <div class="bg-gray-100 min-h-screen">
+            <div class="container mx-auto px-4">
+                <div class="pt-25 pb-6">
+                    <div class="text-center">
+                        <h4 class="text-2xl font-bold text-gray-700">Edit Category</h4>
                     </div>
                 </div>
-
+                <div class="flex justify-center">
+                    <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
+                        <div class="mb-4">
+                            <h5 class="text-lg font-semibold text-gray-600">Category Info</h5>
+                        </div>
+                        <form method="post">
+                            <?php
+                            $catid = intval($_GET['catid']);
+                            $sql = "SELECT * from tblcategory where id=:catid";
+                            $query = $dbh->prepare($sql);
+                            $query->bindParam(':catid', $catid, PDO::PARAM_STR);
+                            $query->execute();
+                            $results = $query->fetchAll(PDO::FETCH_OBJ);
+                            if ($query->rowCount() > 0) {
+                                foreach ($results as $result) {
+                            ?>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 font-medium mb-2">Category Name</label>
+                                        <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="category" value="<?php echo htmlentities($result->CategoryName); ?>" required />
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 font-medium mb-2">Status</label>
+                                        <?php if ($result->Status == 1) { ?>
+                                            <div class="flex items-center mb-2">
+                                                <input type="radio" name="status" id="status-active" value="1" checked class="mr-2">
+                                                <label for="status-active" class="text-gray-600">Active</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="status" id="status-inactive" value="0" class="mr-2">
+                                                <label for="status-inactive" class="text-gray-600">Inactive</label>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="flex items-center mb-2">
+                                                <input type="radio" name="status" id="status-inactive" value="0" checked class="mr-2">
+                                                <label for="status-inactive" class="text-gray-600">Inactive</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="status" id="status-active" value="1" class="mr-2">
+                                                <label for="status-active" class="text-gray-600">Active</label>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                            <?php }
+                            } ?>
+                            <button type="submit" name="update" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Update</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-        </div>
         </div>
         <!-- CONTENT-WRAPPER SECTION END-->
         <?php include('includes/footer.php'); ?>

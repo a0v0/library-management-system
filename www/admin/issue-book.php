@@ -34,13 +34,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         <meta name="author" content="" />
         <title>Online Library Management System | Issue a new Book</title>
         <!-- BOOTSTRAP CORE STYLE  -->
-        <link href="assets/css/bootstrap.css" rel="stylesheet" />
-        <!-- FONT AWESOME STYLE  -->
-        <link href="assets/css/font-awesome.css" rel="stylesheet" />
-        <!-- CUSTOM STYLE  -->
-        <link href="assets/css/style.css" rel="stylesheet" />
-        <!-- GOOGLE FONT -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <script>
             // function for get student name
             function getstudent() {
@@ -84,60 +78,41 @@ if (strlen($_SESSION['alogin']) == 0) {
     <body>
         <!------MENU SECTION START-->
         <?php include('includes/header.php'); ?>
-        <!-- MENU SECTION END-->
-        <div class="content-wra
-    <div class=" content-wrapper">
-            <div class="container">
-                <div class="row pad-botm">
-                    <div class="col-md-12">
-                        <h4 class="header-line">Issue a New Book</h4>
-
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1"">
-<div class=" panel panel-info">
-                        <div class="panel-heading">
-                            Issue a New Book
-                        </div>
-                        <div class="panel-body">
-                            <form role="form" method="post">
-
-                                <div class="form-group">
-                                    <label>Srtudent id<span style="color:red;">*</span></label>
-                                    <input class="form-control" type="text" name="studentid" id="studentid" onBlur="getstudent()" autocomplete="off" required />
-                                </div>
-
-                                <div class="form-group">
-                                    <span id="get_student_name" style="font-size:16px;"></span>
-                                </div>
-
-
-
-
-
-                                <div class="form-group">
-                                    <label>ISBN Number or Book Title<span style="color:red;">*</span></label>
-                                    <input class="form-control" type="text" name="booikid" id="bookid" onBlur="getbook()" required="required" />
-                                </div>
-
-                                <div class="form-group">
-
-                                    <select class="form-control" name="bookdetails" id="get_book_name" readonly>
-
-                                    </select>
-                                </div>
-                                <button type="submit" name="issue" id="submit" class="btn btn-info">Issue Book </button>
-
-                            </form>
-                        </div>
+        <!-- MENU SECTION END -->
+        <div class="bg-gray-100 min-h-screen">
+            <div class="container mx-auto px-4">
+                <div class="pt-26 pb-6">
+                    <div class="text-center">
+                        <h4 class="text-2xl font-bold text-gray-700">Issue a New Book</h4>
                     </div>
                 </div>
-
+                <div class="flex justify-center">
+                    <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-lg">
+                        <div class="mb-4">
+                            <h5 class="text-lg font-semibold text-gray-600">Book Issue Form</h5>
+                        </div>
+                        <form method="post">
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2">Student ID<span class="text-red-500">*</span></label>
+                                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="studentid" id="studentid" onBlur="getstudent()" autocomplete="off" required />
+                            </div>
+                            <div class="mb-4">
+                                <span id="get_student_name" class="text-gray-600 text-sm"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2">ISBN Number<span class="text-red-500">*</span></label>
+                                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="booikid" id="bookid" onBlur="getbook()" required />
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2">Book Details</label>
+                                <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="bookdetails" id="get_book_name" readonly>
+                                </select>
+                            </div>
+                            <button type="submit" name="issue" id="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Issue Book</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-        </div>
         </div>
         <!-- CONTENT-WRAPPER SECTION END-->
         <?php include('includes/footer.php'); ?>
